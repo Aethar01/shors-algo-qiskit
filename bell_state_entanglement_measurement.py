@@ -9,6 +9,7 @@ circuit.h(0)
 circuit.s(0)
 circuit.h(0)
 circuit.t(0)
+circuit.x(1)
 circuit.draw(output="mpl", filename="HSHT") # draw the circuit and save it as an image
 
 
@@ -17,14 +18,14 @@ X = QuantumRegister(1, "X")
 Y = QuantumRegister(1, "Y")
 A = ClassicalRegister(1, "A")
 B = ClassicalRegister(1, "B")
-circuit = QuantumCircuit(Y, X, B, A)
-circuit.h(Y) #Hadamard on Y
-circuit.cx(Y,X) # Copy
-circuit.measure(Y, B) #Measurement on Y to classical register B
-circuit.measure(X, A) #Measurement on X to classical register A
-circuit.draw(output="mpl", filename="hadamard controlled NOT")
+circuit1 = QuantumCircuit(Y, X, B, A)
+circuit1.h(Y) #Hadamard on Y
+circuit1.cx(Y,X) # Controlled NOT gate with Y as control and X as target
+circuit1.measure(Y, B) #Measurement on Y to classical register B
+circuit1.measure(X, A) #Measurement on X to classical register A
+circuit1.draw(output="mpl", filename="hadamard controlled NOT")
 
 # The circuit can be simulated using the Sampler primitive
-results = Sampler().run(circuit).result()
+results = Sampler().run(circuit1).result()
 stats = results.quasi_dists[0].binary_probabilities()
 plot_histogram(stats, filename="Quasi-probability graph")
