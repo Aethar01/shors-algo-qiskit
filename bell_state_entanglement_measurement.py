@@ -9,7 +9,7 @@ circuit.h(0)
 circuit.s(0)
 circuit.h(0)
 circuit.t(0)
-circuit.draw(output="mpl", filename="HSHT") #Note the circuit HSHT is printed in the terminal
+circuit.draw(output="mpl", filename="HSHT") # draw the circuit and save it as an image
 
 
 ### 2nd circuit using Hadamard and a controlled NOT gate with measurements
