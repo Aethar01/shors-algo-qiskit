@@ -9,7 +9,7 @@ circuit.h(0)
 circuit.s(0)
 circuit.h(0)
 circuit.t(0)
-print(circuit.draw()) #Note the circuit HSHT is printed in the terminal
+circuit.draw(output="mpl", filename="HSHT") #Note the circuit HSHT is printed in the terminal
 
 
 ### 2nd circuit using Hadamard and a controlled NOT gate with measurements
@@ -22,9 +22,9 @@ circuit.h(Y) #Hadamard on Y
 circuit.cx(Y,X) # Copy
 circuit.measure(Y, B) #Measurement on Y to classical register B
 circuit.measure(X, A) #Measurement on X to classical register A
-print(circuit.draw())
+circuit.draw(output="mpl", filename="hadamard controlled NOT")
 
 # The circuit can be simulated using the Sampler primitive
 results = Sampler().run(circuit).result()
 stats = results.quasi_dists[0].binary_probabilities()
-print(plot_histogram(stats))
+plot_histogram(stats, filename="Quasi-probability graph")
